@@ -1,0 +1,209 @@
+19/6/23
+
+DBMS-Interface between user and user data,database found 1969 for multiple file storage and organisation.
+Tool to carry out CRUD operations.
+
+Components of DBMS-Hardware,Software,End user,Data query language
+
+Architecture-Three tiers-single-direct,client&server,two-indirect,clients,server&application,three-
+Presentation<->Application<->database,no transparency of data
+
+Types-Distributed,Centralized,Relational,Graph,NoSQL,Cloud
+Distributed-A table in a database used by other databases
+Centralized-Many tables in a database used by other databases
+Graph-Hierarchical,one to many,top down or bottom up approach
+
+Components-Configuring authentication and authorisation,data backups,storage engine,query language,query 
+processor,optimization engine,metadata catalog,log manager
+Cache data(Meta data)-temporary memory to load already visited data faster
+
+Model the data-structured(tables-ER<sql,pictorial>),semi structured(MongoDB and NoSQL),unstructured(Object based
+<functions and encapsulation>)
+
+ER Model-entity(real time objects)<rectangle>,attribute(properties)<oval>,relationship(between entities)
+<rhombus>
+Attribute types:
+key attribute-has unique values
+Composite-one attribute divides into many attributes
+Multivalued-Has many values to a single attribute
+Derived-derived from another attribute
+
+Entity types:strong and weak
+
+Relationship types:one to one,one to many,many to one,many to many
+
+DBMS consists of rows and columns.SQL-Structured Query Language
+DDL-Data Definition Language-create,alter,drop,truncate
+DML-Data Manipulation Language-insert,update,delete
+TCL-Transaction Control Language-grant,revoke,commit,rollback,savepoint
+DQL-Data Query Language-select
+
+Server recieves and processes clients request and give the data to client 
+
+-- create a table
+CREATE TABLE students (
+  id INTEGER PRIMARY KEY,
+  name varchar(20),
+  gender varchar(5)
+);
+-- insert some values
+INSERT INTO students VALUES (1, 'Ryan', 'M');
+INSERT INTO students VALUES (2, 'Joanna', 'F');
+INSERT INTO students VALUES (3, 'Gosling', 'M');
+INSERT INTO students VALUES (4, 'Armas', 'F');
+INSERT INTO students VALUES (5, 'Peter', 'M');
+INSERT INTO students VALUES (6, 'Joao', 'M');
+INSERT INTO students VALUES (7, 'Bill', 'M');
+INSERT INTO students VALUES (8, 'Joseph', 'M');
+INSERT INTO students VALUES (9, 'Rick', 'M');
+INSERT INTO students VALUES (10, 'John', 'M');
+-- fetch some values
+SELECT * FROM students where gender='M';
+Alter table students add age Integer;
+update students set age=21 where id=1;
+update students set age=20 where id=2;
+update students set age=19 where id=3;
+update students set age=19 where id=4;
+update students set age=21 where id=5;
+update students set age=20 where id=6;
+update students set age=21 where id=7;
+update students set age=20 where id=8;
+update students set age=21 where id=9;
+update students set age=20 where id=10;
+select * from students;
+Alter table students drop column age;
+select * from students;
+delete from students where id=8;
+select * from students where id between 5 and 10;
+select * from students where name in('Ryan','Gosling');
+
+id	name	gender
+1	Ryan	M
+3	Gosling	M
+5	Peter	M
+6	Joao	M
+7	Bill	M
+8	Joseph	M
+9	Rick	M
+10	John	M
+id	name	gender	age
+1	Ryan	M	21
+2	Joanna	F	20
+3	Gosling	M	19
+4	Armas	F	19
+5	Peter	M	21
+6	Joao	M	20
+7	Bill	M	21
+8	Joseph	M	20
+9	Rick	M	21
+10	John	M	20
+id	name	gender
+1	Ryan	M
+2	Joanna	F
+3	Gosling	M
+4	Armas	F
+5	Peter	M
+6	Joao	M
+7	Bill	M
+8	Joseph	M
+9	Rick	M
+10	John	M
+id	name	gender
+5	Peter	M
+6	Joao	M
+7	Bill	M
+9	Rick	M
+10	John	M
+id	name	gender
+1	Ryan	M
+3	Gosling	M
+ 
+Sort by a column(Ordered by name)
+select * from students order by name asc;
+id	name	gender	age
+4	Armas	F	19
+7	Bill	M	21
+3	Gosling	M	19
+2	Joanna	F	20
+6	Joao	M	20
+10	John	M	20
+8	Joseph	M	20
+5	Peter	M	21
+9	Rick	M	21
+1	Ryan	M	21
+
+Count by age
+select age,count(*) as count from students group by age;
+age	count
+21	4
+20	4
+19	2
+
+-- Creating a new table named "courses"
+CREATE TABLE courses (
+  id INTEGER PRIMARY KEY,
+  course_name VARCHAR(50),
+  instructor VARCHAR(50)
+);
+
+-- Inserting some values into the "courses" table
+INSERT INTO courses VALUES (1, 'Mathematics', 'Professor Smith');
+INSERT INTO courses VALUES (2, 'Physics', 'Professor Johnson');
+INSERT INTO courses VALUES (3, 'English Literature', 'Professor Davis');
+INSERT INTO courses VALUES (4, 'History', 'Professor Thompson');
+select * from courses;
+
+id	course_name	instructor
+1	Mathematics	Professor Smith
+2	Physics	Professor Johnson
+3	English Literature	Professor Davis
+4	History	Professor Thompson
+
+Join operations:
+
+SELECT students.name, courses.course_name FROM students 
+INNER JOIN courses ON students.id = courses.id;
+
+name	course_name
+Ryan	Mathematics
+Joanna	Physics
+Gosling	English Literature
+Armas	History
+
+SELECT students.name, courses.course_name FROM students
+LEFT JOIN courses ON students.id = courses.id;
+
+name	course_name
+Ryan	Mathematics
+Joanna	Physics
+Gosling	English Literature
+Armas	History
+Peter	NULL
+Joao	NULL
+Bill	NULL
+Joseph	NULL
+Rick	NULL
+John	NULL
+
+SELECT students.name, courses.course_name FROM students
+RIGHT JOIN courses ON students.id = courses.id;
+
+name	course_name
+Ryan	Mathematics
+Joanna	Physics
+Gosling	English Literature
+Armas	History
+
+Sum:
+
+SELECT SUM(age) AS total_age FROM students;
+
+total_age
+202
+
+Average
+
+SELECT AVG(age) AS average_age FROM students;
+
+average_age
+20.2000
