@@ -449,4 +449,4 @@ db.carinfo.find().sort({Name:1})
 
 
 Backup of existing database to new database
-db.carinfo.aggregate([{ $out: "backup.carinfo" }])
+db.carinfo.find().forEach(function(send){db.getSiblingDB('test')['carinfo'].insert(send);})
