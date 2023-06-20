@@ -1,0 +1,452 @@
+use mern
+switched to db mern
+
+db.newcollection.insert({id:1,name:"Joey"})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("64916cc1667c2b233cf7d30d")
+  }
+}
+
+db.newcollection.find()
+{
+  _id: ObjectId("64916cc1667c2b233cf7d30d"),
+  id: 1,
+  name: 'Joey'
+}
+
+db.newcollection.insertMany([{id:2,name:"Yogi"},{id:3,name:"Thomas"},{id:4,name:"Shelby"}])
+db.newcollection.find()
+{
+  _id: ObjectId("64916cc1667c2b233cf7d30d"),
+  id: 1,
+  name: 'Joey'
+}
+{
+  _id: ObjectId("64916de3667c2b233cf7d30e"),
+  id: 2,
+  name: 'Yogi'
+}
+{
+  _id: ObjectId("64916de3667c2b233cf7d30f"),
+  id: 3,
+  name: 'Thomas'
+}
+{
+  _id: ObjectId("64916de3667c2b233cf7d310"),
+  id: 4,
+  name: 'Shelby'
+}
+
+
+
+db.newcollection.updateOne({id:4},{$set:{name:"Arthur"}})
+db.newcollection.find()
+{
+  _id: ObjectId("64916cc1667c2b233cf7d30d"),
+  id: 1,
+  name: 'Joey'
+}
+{
+  _id: ObjectId("64916de3667c2b233cf7d30e"),
+  id: 2,
+  name: 'Yogi'
+}
+{
+  _id: ObjectId("64916de3667c2b233cf7d30f"),
+  id: 3,
+  name: 'Thomas'
+}
+{
+  _id: ObjectId("64916de3667c2b233cf7d310"),
+  id: 4,
+  name: 'Arthur'
+}
+
+
+db.newcollection.deleteOne({name:"Arthur"})
+db.newcollection.find()
+{
+  _id: ObjectId("64916cc1667c2b233cf7d30d"),
+  id: 1,
+  name: 'Joey'
+}
+{
+  _id: ObjectId("64916de3667c2b233cf7d30e"),
+  id: 2,
+  name: 'Yogi'
+}
+{
+  _id: ObjectId("64916de3667c2b233cf7d30f"),
+  id: 3,
+  name: 'Thomas'
+}
+
+db.newcollection.find({"name":"Yogi"})
+{
+  _id: ObjectId("64916de3667c2b233cf7d30e"),
+  id: 2,
+  name: 'Yogi'
+}
+
+db.carinfo.insertMany([
+  {
+    Name: 'Swift',
+    Model: 'DTS',
+    Rented_user_count: 1,
+    Mileage: 18,
+    Transmission: 'Automatic',
+    Rent: 1300,
+    Fuel: 'Petrol',
+    imageurl: 'www.swift.com'
+  },
+  {
+    Name: 'Audi',
+    Model: 'A4',
+    Rented_user_count: 2,
+    Mileage: 22,
+    Transmission: 'Automatic',
+    Rent: 2000,
+    Fuel: 'Petrol',
+    imageurl: 'www.audi.com'
+  },
+  {
+    Name: 'Honda',
+    Model: 'Civic',
+    Rented_user_count: 3,
+    Mileage: 20,
+    Transmission: 'Manual',
+    Rent: 1500,
+    Fuel: 'Petrol',
+    imageurl: 'www.honda.com'
+  },
+  {
+    Name: 'Ford',
+    Model: 'Mustang',
+    Rented_user_count: 4,
+    Mileage: 15,
+    Transmission: 'Automatic',
+    Rent: 2500,
+    Fuel: 'Petrol',
+    imageurl: 'www.ford.com'
+  },
+  {
+    Name: 'Chevrolet',
+    Model: 'Camaro',
+    Rented_user_count: 2,
+    Mileage: 17,
+    Transmission: 'Manual',
+    Rent: 2200,
+    Fuel: 'Petrol',
+    imageurl: 'www.chevrolet.com'
+  },
+  {
+    Name: 'Volkswagen',
+    Model: 'Golf',
+    Rented_user_count: 2,
+    Mileage: 21,
+    Transmission: 'Automatic',
+    Rent: 1800,
+    Fuel: 'Diesel',
+    imageurl: 'www.volkswagen.com'
+  },
+  {
+    Name: 'BMW',
+    Model: '3 Series',
+    Rented_user_count: 3,
+    Mileage: 19,
+    Transmission: 'Automatic',
+    Rent: 2800,
+    Fuel: 'Petrol',
+    imageurl: 'www.bmw.com'
+  },
+  {
+    Name: 'Mercedes-Benz',
+    Model: 'C-Class',
+    Rented_user_count: 1,
+    Mileage: 23,
+    Transmission: 'Automatic',
+    Rent: 3200,
+    Fuel: 'Petrol',
+    imageurl: 'www.mercedes-benz.com'
+  },
+  {
+    Name: 'Hyundai',
+    Model: 'Tucson',
+    Rented_user_count: 2,
+    Mileage: 16,
+    Transmission: 'Automatic',
+    Rent: 1700,
+    Fuel: 'Petrol',
+    imageurl: 'www.hyundai.com'
+  },
+  {
+    Name: 'Kia',
+    Model: 'Sorento',
+    Rented_user_count: 1,
+    Mileage: 18,
+    Transmission: 'Automatic',
+    Rent: 1600,
+    Fuel: 'Petrol',
+    imageurl: 'www.kia.com'
+  },
+  {
+    Name: 'Nissan',
+    Model: 'Altima',
+    Rented_user_count: 0,
+    Mileage: 24,
+    Transmission: 'Automatic',
+    Rent: 1900,
+    Fuel: 'Petrol',
+    imageurl: 'www.nissan.com'
+  },
+  {
+    Name: 'Lexus',
+    Model: 'RX',
+    Rented_user_count: 1,
+    Mileage: 22,
+    Transmission: 'Automatic',
+    Rent: 3000,
+    Fuel: 'Petrol',
+    imageurl: 'www.lexus.com'
+  },
+  {
+    Name: 'Mazda',
+    Model: 'CX-5',
+    Rented_user_count: 3,
+    Mileage: 20,
+    Transmission: 'Automatic',
+    Rent: 1700,
+    Fuel: 'Petrol',
+    imageurl: 'www.mazda.com'
+  },
+  {
+    Name: 'Subaru',
+    Model: 'Forester',
+    Rented_user_count: 2,
+    Mileage: 19,
+    Transmission: 'Automatic',
+    Rent: 1800,
+    Fuel: 'Petrol',
+    imageurl: 'www.subaru.com'
+  },
+  {
+    Name: 'Jeep',
+    Model: 'Wrangler',
+    Rented_user_count: 2,
+    Mileage: 14,
+    Transmission: 'Automatic',
+    Rent: 2300,
+    Fuel: 'Petrol',
+    imageurl: 'www.jeep.com'
+  },
+  {
+    Name: 'Toyota',
+    Model: 'Corolla',
+    Rented_user_count: 0,
+    Mileage: 25,
+    Transmission: 'Automatic',
+    Rent: 1800,
+    Fuel: 'Petrol',
+    imageurl: 'www.toyota.com'
+  }
+])
+
+db.carinfo.find({Rent:{$lt:2000}})
+{
+  "_id": ObjectId("60cbea68a94f201ec45678ab"),
+  "Name": "Swift",
+  "Model": "DTS",
+  "Rented_user_count": 1,
+  "Mileage": 18,
+  "Transmission": "Automatic",
+  "Rent": 1300,
+  "Fuel": "Petrol",
+  "imageurl": "www.swift.com"
+}
+{
+  "_id": ObjectId("60cbea68a94f201ec45678ac"),
+  "Name": "Honda",
+  "Model": "Civic",
+  "Rented_user_count": 3,
+  "Mileage": 20,
+  "Transmission": "Manual",
+  "Rent": 1500,
+  "Fuel": "Petrol",
+  "imageurl": "www.honda.com"
+}
+{
+  "_id": ObjectId("60cbea68a94f201ec45678af"),
+  "Name": "Hyundai",
+  "Model": "Tucson",
+  "Rented_user_count": 2,
+  "Mileage": 16,
+  "Transmission": "Automatic",
+  "Rent": 1700,
+  "Fuel": "Petrol",
+  "imageurl": "www.hyundai.com"
+}
+{
+  "_id": ObjectId("60cbea68a94f201ec45678b0"),
+  "Name": "Kia",
+  "Model": "Sorento",
+  "Rented_user_count": 1,
+  "Mileage": 18,
+  "Transmission": "Automatic",
+  "Rent": 1600,
+  "Fuel": "Petrol",
+  "imageurl": "www.kia.com"
+}
+{
+  "_id": ObjectId("60cbea68a94f201ec45678b2"),
+  "Name": "Lexus",
+  "Model": "RX",
+  "Rented_user_count": 1,
+  "Mileage": 22,
+  "Transmission": "Automatic",
+  "Rent": 3000,
+  "Fuel": "Petrol",
+  "imageurl": "www.lexus.com"
+}
+{
+  "_id": ObjectId("60cbea68a94f201ec45678b6"),
+  "Name": "Mazda",
+  "Model": "CX-5",
+  "Rented_user_count": 3,
+  "Mileage": 20,
+  "Transmission": "Automatic",
+  "Rent": 1700,
+  "Fuel": "Petrol",
+  "imageurl": "www.mazda.com"
+}
+{
+  "_id": ObjectId("60cbea68a94f201ec45678b7"),
+  "Name": "Subaru",
+  "Model": "Forester",
+  "Rented_user_count": 2,
+  "Mileage": 19,
+  "Transmission": "Automatic",
+  "Rent": 1800,
+  "Fuel": "Petrol",
+  "imageurl": "www.subaru.com"
+}
+{
+  "_id": ObjectId("60cbea68a94f201ec45678b9"),
+  "Name": "Toyota",
+  "Model": "Corolla",
+  "Rented_user_count": 0,
+  "Mileage": 25,
+  "Transmission": "Automatic",
+  "Rent": 1800,
+  "Fuel": "Petrol",
+  "imageurl": "www.toyota.com"
+}
+
+
+db.carinfo.find().sort({Name:1})
+[
+  {
+    "_id": ObjectId("..."),
+    "Name": "Audi",
+    "Model": "A4",
+    "Rented_user_count": 2,
+    "Mileage": 22,
+    "Transmission": "Automatic",
+    "Rent": 2000,
+    "Fuel": "Petrol",
+    "imageurl": "www.audi.com"
+  },
+  {
+    "_id": ObjectId("..."),
+    "Name": "Audi",
+    "Model": "A4",
+    "Rented_user_count": 2,
+    "Mileage": 22,
+    "Transmission": "Automatic",
+    "Rent": 2000,
+    "Fuel": "Petrol",
+    "imageurl": "www.audi.com"
+  },
+  {
+    "_id": ObjectId("..."),
+    "Name": "BMW",
+    "Model": "3 Series",
+    "Rented_user_count": 3,
+    "Mileage": 19,
+    "Transmission": "Automatic",
+    "Rent": 2800,
+    "Fuel": "Petrol",
+    "imageurl": "www.bmw.com"
+  },
+  {
+    "_id": ObjectId("..."),
+    "Name": "Chevrolet",
+    "Model": "Camaro",
+    "Rented_user_count": 2,
+    "Mileage": 17,
+    "Transmission": "Manual",
+    "Rent": 2200,
+    "Fuel": "Petrol",
+    "imageurl": "www.chevrolet.com"
+  },
+  {
+    "_id": ObjectId("..."),
+    "Name": "Ford",
+    "Model": "Mustang",
+    "Rented_user_count": 4,
+    "Mileage": 15,
+    "Transmission": "Automatic",
+    "Rent": 2500,
+    "Fuel": "Petrol",
+    "imageurl": "www.ford.com"
+  },
+  {
+    "_id": ObjectId("..."),
+    "Name": "Honda",
+    "Model": "Civic",
+    "Rented_user_count": 3,
+    "Mileage": 20,
+    "Transmission": "Manual",
+    "Rent": 1500,
+    "Fuel": "Petrol",
+    "imageurl": "www.honda.com"
+  },
+  {
+    "_id": ObjectId("..."),
+    "Name": "Hyundai",
+    "Model": "Tucson",
+    "Rented_user_count": 2,
+    "Mileage": 16,
+    "Transmission": "Automatic",
+    "Rent": 1700,
+    "Fuel": "Petrol",
+    "imageurl": "www.hyundai.com"
+  },
+  {
+    "_id": ObjectId("..."),
+    "Name": "Jeep",
+    "Model": "Wrangler",
+    "Rented_user_count": 2,
+    "Mileage": 14,
+    "Transmission": "Automatic",
+    "Rent": 2300,
+    "Fuel": "Petrol",
+    "imageurl": "www.jeep.com"
+  },
+  {
+    "_id": ObjectId("..."),
+    "Name": "Kia",
+    "Model": "Sorento",
+    "Rented_user_count": 1,
+    "Mileage": 18,
+    "Transmission": "Automatic",
+    "Rent": 1600,
+    "Fuel": "Petrol",
+    "imageurl": "www.kia.com"
+}
+
+
+Backup of existing database to new database
+db.carinfo.aggregate([{ $out: "backup.carinfo" }])
