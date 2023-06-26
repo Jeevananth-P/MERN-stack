@@ -1,0 +1,16 @@
+{
+    "name": "Jeeva",
+    "department": "CSE",
+    "year": "III",
+    "address": {
+      "door-number": "1/203",
+      "village-name": "Periyakalandhai",
+      "taluk" : "Kinathukadavu",
+      "pincode" : 642202
+    },
+    "parents":{
+        "father":"Patteshwaran",
+        "mother":"Buvaneswari"
+    }
+}
+  
