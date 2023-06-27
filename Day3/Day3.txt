@@ -1,0 +1,258 @@
+Javascript
+Dynamic language
+
+let and const are ES6 features introduced in 2016,var is before 2016
+
+var can redeclare and reinitialise which is a drawback whereas let only declare a variable
+once
+
+Redeclaration leads to error.var doesnt have a blogscope so cannot have local variables
+
+Hosting-Things declared using var keyword will be moved to the top of the program only for 
+declaration but initialization only takes place at the specified line
+
+var x=20;
+{
+var x=100;
+console.log(x);
+}
+console.log(x);
+Output:100 100 but using let instead of var will lead to output 100 20
+
+Data Types:
+
+*Number-int,infinity,-infinity,NaN
+
+*Bigint 2^53
+let b=100n;
+console.log(b,typeof b);
+
+*String-'',"",``(Backtick-2016 ES6 feature)
+let num1=10;
+let num2=20;
+console.log("Addition of two numbers "+num1+" and "+num2+" is "+(num1+num2));
+O/P:Addition of two numbers 10 and 20 is 30
+
+console.log(`Addition of two numbers ${num1} and ${num2} is 
+${num1+num2}`);
+O/P:Addition of two numbers 10 and 20 is 
+30
+
+*Null-value is null
+let obj=null;
+console.log(obj);
+O/P:null
+
+*Undefined-empty container,not defined
+let xtr;
+console.log(xtr);
+console.log(sece);
+var sece='college';
+O/P:undefined undefined
+
+*Boolean-true or false
+
+*Object-collection of data
+const user={
+    name:'admin',
+    age:19,
+    school:'VVM',
+    college:'SECE'
+}
+user.id=761;
+console.log(user);
+O/P:{ name: "admin", age: 19, school: "VVM", college: "SECE", id: 761 }
+user.age=21;
+console.log(user);
+O/P:{ name: "admin", age: 21, school: "VVM", college: "SECE", id: 761 }
+console.log(user.age);
+O/P:21
+delete user.school;
+console.log(user);
+O/P:{ name: "admin", age: 21, college: "SECE", id: 761 }
+
+const user=Object.freeze({
+    name:'admin',
+    age:19,
+    school:'VVM',
+    college:'SECE'
+})
+freeze does not allow any change to the object
+user.age=21;
+console.log(user);
+O/P:{ name: "admin", age: 19, school: "VVM", college: "SECE", id: 761 }
+
+const u=Object.keys({
+    name:'admin',
+    age:19,
+    school:'VVM',
+    college:'SECE'
+})
+console.log(u);
+O/P:[ "name", "age", "school", "college" ]
+console.log(Object.keys(user)) //works same
+
+const u1=Object.values({
+    name:'admin',
+    age:19,
+    school:'VVM',
+    college:'SECE'
+})
+console.log(u1);
+O/P:[ "admin", 19, "VVM", "SECE" ]
+
+//Mutation-Refers same address
+const userx={name:'x',age:33}
+const usery=userx;
+usery.age=10;
+console.log(userx,usery);
+O/P:{ name: "x", age: 10 }
+ { name: "x", age: 10 }
+
+Avoiding by copying
+const usera={name:'x',age:33}
+const userb={...usera,age:20};
+console.log(usera,userb);
+O/P:{ name: "x", age: 33 }
+ { name: "x", age: 20 }
+
+const details={
+    address:{
+        street:'second street',
+        city:'Kovai'
+    }
+}
+console.log(details.address.city)
+O/P:Kovai
+console.log(details.name)
+O/P:undefined
+const d={
+    city:'Kovai'
+}
+console.log(details.address.city)//Error
+console.log(details.address?.city)//(Optional Chaining)undefined
+
+for(const key in details){
+    console.log(key,details[key]);
+}
+O/P:address { street: "second street", city: "Kovai" }
+
+
+Function:
+User for code redundancy and reusability
+Syntax:function func_name(para1,para2){.....return statement}
+
+function sum(num1,num2){
+    if(isNaN(num1) || isNaN(num2)){
+        return "invalid number";
+    }
+    return num1+num2;
+}
+console.log(sum(num1,num2));
+O/P:30
+
+== - compares only value(0==false,true)
+=== - compares value and datatype(0==false,false)
+
+Arrow function:
+const sum1=(num1,num2) =>{
+     return num1+num2;
+}
+console.log(sum1(num1,num2));
+
+Immediately invoking function expression:
+(function imsum(num1,num2){
+    if(isNaN(num1) || isNaN(num2)){
+        return "invalid number";
+    }
+    console.log(num1+num2);
+})(10,20);
+O/P:30
+
+Function inside a function:
+const calculator =(num1,num2,operation)=>{
+    return operation(num1,num2)
+}
+console.log(calculator(10,20,sum));
+O/P:30
+
+Simple Calculator:
+
+const sum1=(num1,num2) =>{
+     return num1+num2;
+}
+
+const diff=(num1,num2) =>{
+    return num1-num2;
+}
+const prod=(num1,num2) =>{
+    return num1*num2;
+}
+const div=(num1,num2) =>{
+    return num1/num2;
+}
+
+const calculator =(num1,num2,operation)=>{
+    return operation(num1,num2)
+}
+
+console.log(calculator(10,20,sum));
+console.log(calculator(100,20,diff));
+console.log(calculator(10,20,prod));
+console.log(calculator(100,20,div));
+
+Calculator is a higher order function as it has a function as a parmater and returns a function
+Sum,diff,prod,div are callback functions-passed as a parameter and returned
+
+let str="    Hello from SECE    ";
+let str2=str.trim();
+console.log(str.replace('E','O'));//Non-destructive-does not change the original string
+console.log(str.replaceAll('E','O'));//Non-destructive-does not change the original string
+console.log(str2);
+O/P:
+    Hello from SOCE    
+    Hello from SOCO    
+Hello from SECE
+
+let arr=[1,2,3,'123'];
+arr.push(10);
+console.log(arr);
+arr.pop();
+console.log(arr);
+arr.unshift(0);
+console.log(arr);
+arr.shift();
+console.log(arr);
+console.log(arr[1]);
+O/P:
+Array(5) [ 1, 2, 3, "123", 10 ]
+Array(4) [ 1, 2, 3, "123" ]
+Array(5) [ 0, 1, 2, 3, "123" ]
+Array(4) [ 1, 2, 3, "123" ]
+2
+
+arr.push((num1)=>num1*5);
+arr.push({a:1,b:2,c:3,say_hello:()=>"hello"});
+console.log(arr);
+console.log(arr[4](10));
+console.log(arr[5].say_hello());
+O/P:
+[ 1, 2, 3, "123", (num1)=>num1*5, {a:1,b:2,c:3,say_hello:()=>"hello"} ]
+50
+hello
+
+for(key in arr[5]){
+    console.log(key,arr[5][key]);
+}
+O/P:
+a 1
+b 2
+c 3
+say_hello hello
+
+let arr1=[1,2,3,4,5];
+arr1.push(6,7);
+arr1.splice(arr1.length,0,8,9,10)
+console.log(arr1);
+O/P:
+[ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
