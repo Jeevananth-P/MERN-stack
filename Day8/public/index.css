@@ -1,0 +1,15 @@
+body{
+  background-color: black;
+  color: burlywood;
+  font-family: JetBrains Mono;
+}
+.mid1{
+  margin-left: 530px; 
+  color: blanchedalmond;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.mid2{
+  margin-left: 460px;
+  color: crimson;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
