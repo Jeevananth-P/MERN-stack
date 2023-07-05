@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+    <title>Document</title>
+    <script src="index.js"></script>
+
+</head>
+
+<body style="background-color:#03C988;font-family: Verdana, Geneva, Tahoma, sans-serif;">
+    <style>
+        .container p::first-letter {
+            font-size: 200%;
+            color: #e22b2b;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .container:hover {
+            display: flex;
+            background-color: lightgreen;
+        }
+
+        .paragraph {
+            border-radius: 10px;
+            width: 40%;
+            height: 50%;
+            padding: 10px;
+            margin: 10px;
+            background-color: rgb(162, 114, 23);
+            box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+        }
+
+        #myDIV {
+            border-radius: 10px;
+            width: 300px;
+            height: 200px;
+            border: 10px;
+            background: cyan;
+            position: relative;
+            animation: mymove 10s infinite;
+            animation-delay: 2s;
+        }
+
+        @keyframes mymove {
+            from {
+                left: -300px;
+            }
+
+            to {
+                left: 100%;
+            }
+        }
+
+        .grey-box {
+            border-radius: 10px;
+            background: lightgray;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .white-box {
+            border-radius: 10px;
+            background: white;
+            padding: 10px;
+            margin: 10px;
+            border-left: 4px solid #03C988;
+        }
+
+        .button {
+            width: 10%;
+            height: 10%;
+            border-radius: 10px;
+            background: green;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .outerbox{
+            width: 300px;
+            height: 250px;
+            background-color: brown;
+            margin:20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .innerbox{
+            width:25px;
+            height: 25px;
+            background-color: blue;
+            margin:20px;
+            text-align: center;
+        }
+
+        .box{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+    </style>
+    <iframe id="if1" width="100%" height="254" style="visibility:visible" src="https://chat.openai.com/"></iframe>
+
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit libero a, cumque nesciunt aspernatur facilis
+            doloribus unde iusto debitis repudiandae ducimus saepe. Officiis omnis dolore impedit assumenda repellat
+            deserunt, enim modi!</p>
+    </div>
+    <div class="container">
+        <p class="paragraph" style="background-color: blue;">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Corrupti quaerat itaque animi provident adipisci aliquid sed natus quasi id accusantium, doloremque et nemo
+            praesentium labore a exercitationem quo sit veritatis!</p>
+        <p class="paragraph" style="background-color: white;">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Libero pariatur eaque perferendis est ipsam saepe consequatur maiores quas reiciendis eum dicta possimus
+            dignissimos, illo beatae quae. Dolorem odio dolore quis.</p>
+        <p class="paragraph" style="background-color: crimson;">Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit. Corrupti quaerat itaque animi provident adipisci aliquid sed natus quasi id accusantium, doloremque et
+            nemo praesentium labore a exercitationem quo sit veritatis!</p>
+    </div>
+    <div id="myDIV"></div>
+
+    <div class="grey-box">
+        <h1>Example</h1>
+        <p>Box model example</p>
+        <div class="white-box">
+            <p>.white-box {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;border-radius: 10px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;background: white;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;padding: 10px;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;margin: 10px;<br>
+                }
+            </p>
+        </div>
+        <div class="button"><a href="https://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel">Try it
+                yourself>></a></div>
+    </div>
+
+    <div class="box" style="height: 700px; background-color: black;">
+        <div class="outerbox">
+            <div class="innerbox">1</div>
+            <div class="innerbox">2</div>
+            <div class="innerbox">3</div>
+            <div class="innerbox">4</div>
+        </div>
+        <div class="outerbox">
+            <div class="innerbox">1</div>
+            <div class="innerbox">2</div>
+            <div class="innerbox">3</div>
+            <div class="innerbox">4</div>
+        </div>
+        <div class="outerbox">
+            <div class="innerbox">1</div>
+            <div class="innerbox">2</div>
+            <div class="innerbox">3</div>
+            <div class="innerbox">4</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
